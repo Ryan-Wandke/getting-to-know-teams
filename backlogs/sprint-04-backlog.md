@@ -26,7 +26,7 @@ Sprint 4 Backlog:
 | RC-008 | As a user, I want my inputs validated (e.g., height ≥ 2 feet) so that I can avoid mistakes and receive accurate results. | 7 | 4 | N | Ready | Juno |
 | RC-006 | As a user, I want a clean and welcoming home screen with instructions so that I can quickly understand how to use the application. | 7 | 3 | N | Ready | Ryan  |
 | RC-005 | As a developer, I want to set up GitHub client and server repositories along with connected Azure Static Web App and Node.js servers so that I can deploy and test code collaboratively in the cloud. | 7 | 5 | Y | Ready | Nicholas |
-| RC-020 | As a developer, I want to verify that all tasks in sprint 4 work together properly. | 7 | 1 | N/Y | Ready | Ryan |
+| RC-020 | As a user, I want to verify that parts of the app and website function together. | 7 | 1 | N | Ready | Ryan |
 | RC-011 | As a developer, I want to implement the risk calculation API using Node.js so that I can encapsulate the core business logic on the server side. | 7 | 6 | Y | Ready | Fawz |
 | RC-012 | As a developer, I want to write at least one Node.js API and commit to GitHub so that I can contribute to server-side functionality and maintain traceable commits. (one story per team member) | 7 | 3 | Y | Ready | Fawz |
 | RC-014 | As a Product Owner, I want to ensure that no calculations occur on the client so that I can maintain centralized and consistent calculation logic. | 7 | 1 | Y | Ready | Ryan |
