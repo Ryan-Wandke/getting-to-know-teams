@@ -151,7 +151,6 @@
 
 		async function calculateRisk(){
 
-			console.log("dbajfh")
 			const age = document.getElementById("age").value
 			const diabetes = document.getElementById("diabetes").value
 			const alzheimer = document.getElementById("alzheimer").value
@@ -186,8 +185,6 @@
 				bp = 1
 			else
 				bp = 0
-
-			console.log("lots")
 
 			const url = "https://health-insurance-risk-calculator-nick.azurewebsites.net"
 			const fetchString = url+"/risk-category?age="+age+"&disease="+history+"&bmi="+bmi+"&bp="+bp
