@@ -28,6 +28,62 @@
 	<button onclick="testServerConnection()">Test Server Connection</button>
 	<div id="ping"></div><br /><br />
 	<div id="testingDiv">
+
+
+	<select id="systolic">
+		<option>&lt;120</option>
+		<option>120-129</option>
+		<option>130-139</option>
+		<option>140-179</option>
+		<option>&gt;180</option>
+	</select> +
+
+	<select id="diastolic">
+		<option>&lt;80</option>
+		<option>80-89</option>
+		<option>90-119</option>
+		<option>&gt;120</option>
+	</select>
+	<input id="category" disabled></input>
+
+	<br>
+	<button type="button" onclick="calculateBP()">Calculate BP</button>
+	<div id="category"></div>
+	<br><br>
+
+	<input id="weight">weight</input>
+	<br>
+	<input id="feet">feet</input>
+	<br>
+	<input id="inches">inches</input>
+	<br>
+	<input id="bmiCategory" disabled></input>
+	<button type="button" onclick="calculateBMI()">Calculate BMI</button>
+	<div id="bmiCategory"></div>
+
+	<br>
+	<br>
+	<input id="age">age</input>
+	<br>
+	<br>
+
+
+	<div>
+	<input type="checkbox" id="diabetes">
+    <label for="diabetes">Diabetes</label>
+	<input type="checkbox" id="cancer">
+    <label for="cancer">Cancer</label>
+	<input type="checkbox" id="alzheimer">
+    <label for="alzheimer">Alzheimer's</label>
+	</div>
+
+	<br>
+	<br>
+	<input id="risk" disabled></input>
+	<button type="button" onclick="calculateRisk()">Calculate Risk</button>
+	<div id="risk"></div>
+	
+
 	<script>
 		async function testServerConnection() {
 			const pingField = document.getElementById("ping");
@@ -45,6 +101,101 @@
 				div.style.display = 'block';
 			} 
 		}
+
+		async function calculateBMI(){
+			const weight = document.getElementById("weight").value
+			const feet = document.getElementById("feet").value
+			const inches = document.getElementById("inches").value
+
+			const url = "https://health-insurance-risk-calculator-nick.azurewebsites.net"
+			const fetchString = url+"/calculate-bmi?feet="+feet+"&inches="+inches+"&weight="+weight
+			const response = await fetch(fetchString)
+			const responseText = await response.text()
+			document.getElementById("bmiCategory").value = responseText
+			const bmiCategory = responseText
+		}
+
+		async function calculateBP(){
+			const systolic = document.getElementById("systolic").value
+			const diastolic = document.getElementById("diastolic").value
+
+			let s = 0
+			let d = 0
+			if (systolic == "<120")		
+				s = 1
+			else if (systolic == "120-129")
+				s = 2
+			else if (systolic == "130-139")
+				s = 3
+			else if (systolic == "140-179")
+				s = 4
+			else if (systolic == ">180")
+				s = 5
+
+			if (diastolic == "<80")
+				d = 1
+			else if (diastolic == "80-89")
+				d = 2
+			else if (diastolic == "90-119")
+				d = 3
+			else if (diastolic == ">120")
+				d = 4
+
+			const url = "https://health-insurance-risk-calculator-nick.azurewebsites.net"
+			const fetchString = url+"/calculate-bp?systolic="+s+"&diastolic="+d
+			const response = await fetch(fetchString)
+			const responseText = await response.text()
+			document.getElementById("category").value = responseText
+			const category = responseText
+		}
+
+		async function calculateRisk(){
+
+			console.log("dbajfh")
+			const age = document.getElementById("age").value
+			const diabetes = document.getElementById("diabetes").value
+			const alzheimer = document.getElementById("alzheimer").value
+			const cancer = document.getElementById("cancer").value
+			const bmiCategory = document.getElementById("bmiCategory").value
+			const bpCategory = document.getElementById("category").value
+
+			let history = 0
+			if (diabetes)
+				history += 1
+			if (alzheimer)
+				history += 1
+			if (cancer)
+				history += 1
+
+			let bmi = 0
+			if (bmi == "obese")
+				bmi = 2
+			else if (bmi == "overweight")
+				bmi = 1
+			else
+				bmi = 0
+
+			let bp = 0
+			if (bp == "crisis")
+				bp = 4
+			else if (bp == "stage2")
+				bp = 3
+			else if (bp == "stage1")
+				bp = 2
+			else if (bp == "elevated")
+				bp = 1
+			else
+				bp = 0
+
+			console.log("lots")
+
+			const url = "https://health-insurance-risk-calculator-nick.azurewebsites.net"
+			const fetchString = url+"/risk-category?age="+age+"&disease="+history+"&bmi="+bmi+"&bp="+bp
+			const response = await fetch(fetchString)
+			const responseText = await response.text()
+			document.getElementById("risk").value = responseText
+		}
+
 	</script>
 
 	</div>
