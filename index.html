@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>MERNa Web</title>
+    <title>Health Insurance Risk Calculator</title>
 	<style>
 		#urlInput {
             width: 500px; 
@@ -22,8 +22,11 @@
 <body>
 	<h1>Health Insurance Risk Calculator</h1>
 
+	<body>Step 1: Select  the first number for systolic blood pressure and the second one 
+		for diastolic, then press Calculate BP. <br><br> If you do not press Calculate BP, it won't include it into the calculations.</body>
 
 
+	<br><br>
 	<select id="systolic">
 		<option>&lt;120</option>
 		<option>120-129</option>
@@ -40,12 +43,15 @@
 	</select>
 	<input id="category" disabled></input>
 
+	
 	<br>
 	<button type="button" onclick="calculateBP()">Calculate BP</button>
 	<div id="category"></div>
 	<br><br>
 
-	<input id="weight">weight</input>
+	<body>Step 2: Select  the first number for weight in pounds, and the second one for feet, and third for inches, then press Calculate BMI. 
+	<br><br> If you do not press Calculate BMI, it won't include it into the calculations. Do not leave fields empty, enter 0 if the value is 0.</body>
+	<br><br><input id="weight">weight</input>
 	<br>
 	<input id="feet">feet</input>
 	<br>
@@ -57,11 +63,14 @@
 
 	<br>
 	<br>
+	<body>Step 3: Enter your current age.</body>
+	<br><br>
 	<input id="age">age</input>
 	<br>
 	<br>
 
 
+	<body>Step 4: Check the box of any disease you have family history of.</body>
 	<div>
 	<input type="checkbox" id="diabetes">
     <label for="diabetes">Diabetes</label>
@@ -69,13 +78,21 @@
     <label for="cancer">Cancer</label>
 	<input type="checkbox" id="alzheimer">
     <label for="alzheimer">Alzheimer's</label>
-	</div>
+	
 
 	<br>
 	<br>
+	<body>Step 5: Press this button once you have completed all other steps. </body>
+	<br><br>
 	<input id="risk" disabled></input>
 	<button type="button" onclick="calculateRisk()">Calculate Risk</button>
 	<div id="risk"></div>
+<br><br><br><br>
+	<label for="urlInput">Server test:</label><br />
+
+	<button onclick="testServerConnection()">Test Server Connection</button>
+	<div id="ping"></div><br /><br />
+	<div id="testingDiv">
 	
 	
 
